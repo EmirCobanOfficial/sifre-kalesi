@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<title>Şifre Kalesi · Şifren ne kadar güçlü?</title>
+<meta name="description" content="Öğrenciler ve veliler için şifre güvenliği testi. Şifreni yaz, gücünü hemen gör. Şifren hiçbir yere gönderilmez.">
+<meta property="og:title" content="Şifre Kalesi · Şifren ne kadar güçlü?">
+<meta property="og:description" content="Güvenli İnternet Haftası: Şifreni test et, güçlü şifre oluşturmayı öğren.">
+<meta name="theme-color" content="#1e1b4b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#pw">Şifre testine geç</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#"><span aria-hidden="true">🛡️</span> Şifre Kalesi</a>
+    <nav aria-label="Bölümler">
+      <a href="#test">Test et</a>
+      <a href="#nasil">Nasıl kırılır?</a>
+      <a href="#ornekler">Örnekler</a>
+      <a href="#kurallar">Kurallar</a>
+      <a href="#bilgi">Doğru mu?</a>
+      <a href="#veliler">Veliler</a>
+      <a href="#gorev">Haftanın görevi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="test">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="badge">Güvenli İnternet Haftası · Güçlü parola</p>
+        <h1>Şifren ne kadar <span class="hl">güçlü?</span></h1>
+        <p class="lead">Bir şifre yaz, gücünü hemen gör. Neyin iyi, neyin eksik olduğunu adım adım anlatalım.</p>
+        <p class="privacy"><span aria-hidden="true">🔒</span> Yazdığın şifre <strong>hiçbir yere gönderilmez</strong>; analiz yalnızca senin cihazında yapılır. Yine de gerçek şifreni değil, ona benzeyen bir örnek dene.</p>
+      </div>
+      <svg class="shield" viewBox="0 0 200 220" aria-hidden="true">
+        <defs>
+          <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#22d3ee"/>
+            <stop offset="1" stop-color="#6366f1"/>
+          </linearGradient>
+        </defs>
+        <path d="M100 10 L180 40 V105 C180 160 145 195 100 210 C55 195 20 160 20 105 V40 Z" fill="url(#sg)"/>
+        <path d="M100 30 L162 53 V105 C162 148 135 176 100 189 C65 176 38 148 38 105 V53 Z" fill="#ffffff" fill-opacity=".14"/>
+        <circle cx="100" cy="95" r="18" fill="#1e1b4b"/>
+        <path d="M92 105 L108 105 L114 145 L86 145 Z" fill="#1e1b4b"/>
+        <g class="sparkles" fill="#fde047">
+          <circle cx="14" cy="30" r="5"/>
+          <circle cx="190" cy="16" r="4"/>
+          <circle cx="188" cy="150" r="6"/>
+          <circle cx="8" cy="170" r="4"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap">
+      <div class="tester card">
+        <label for="pw" class="pw-label">Şifreni yaz</label>
+        <div class="pw-row">
+          <input id="pw" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="128" placeholder="Örneğin: BenimKedimHerSabah7deSutIcer!">
+          <button id="toggle" type="button" class="btn ghost" aria-pressed="false" aria-controls="pw">Göster</button>
+        </div>
+
+        <div class="result" id="result" data-level="empty">
+          <div class="gauge">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="track" cx="60" cy="60" r="52"/>
+              <circle class="meter" id="meter" cx="60" cy="60" r="52"/>
+            </svg>
+            <div class="gauge-text">
+              <span class="gauge-icon" id="lvl-icon" aria-hidden="true">✍️</span>
+              <strong id="lvl-name">Bekliyor</strong>
+            </div>
+          </div>
+
+          <div class="time">
+            <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="time-label">Bir bilgisayar bu şifreyi tahmin ederek bulmaya çalışsa:</p>
+            <p class="time-value" id="time">Bir şifre yaz ve sonucu gör.</p>
+            <p class="time-compare" id="compare"></p>
+            <p class="stats" id="stats"></p>
+          </div>
+
+          <div class="checks">
+            <h2 class="h3">Kontrol listesi</h2>
+            <ul id="checks">
+              <li data-check="length">En az 12 karakter</li>
+              <li data-check="lower">Küçük harf (a-z)</li>
+              <li data-check="upper">Büyük harf (A-Z)</li>
+              <li data-check="digit">Rakam (0-9)</li>
+              <li data-check="symbol">Sembol (! ? # - _ gibi)</li>
+              <li data-check="notCommon">Çok kullanılan bir şifre değil</li>
+              <li data-check="noPersonal">Kolay tahmin edilen isim, kelime ya da yıl yok</li>
+              <li data-check="noPattern">Sıra ya da tekrar yok (abc, 123, aaa)</li>
+            </ul>
+          </div>
+
+          <div class="tips">
+            <h2 class="h3">Öneriler</h2>
+            <ul id="tips"><li>Şifreni yazdıkça burada sana özel ipuçları çıkacak.</li></ul>
+          </div>
+        </div>
+        <p class="sr-only" aria-live="polite" id="live"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nasil">
+    <div class="wrap">
+      <h2>Şifreler nasıl ele geçirilir?</h2>
+      <p class="sub">Kötü niyetli kişiler şifreleri çoğu zaman tahmin ederek bulur. Bunu çok hızlı yapan programlar kullanırlar.</p>
+      <div class="counter card reveal">
+        <p>Güçlü bir bilgisayar <strong>bir saniyede</strong> yaklaşık</p>
+        <p class="big" data-count="10000000000">10.000.000.000</p>
+        <p>şifre deneyebilir.</p>
+      </div>
+      <div class="grid">
+        <article class="card info reveal">
+          <div class="ico" aria-hidden="true">📋</div>
+          <h3>Listeden tahmin</h3>
+          <p>"123456", "sifre" ya da takım isimleri gibi en çok kullanılan şifreler bir listede durur. İlk önce bunlar denenir.</p>
+        </article>
+        <article class="card info reveal">
+          <div class="ico" aria-hidden="true">🔁</div>
+          <h3>Deneme-yanılma</h3>
+          <p>Program bütün harf ve rakam birleşimlerini sırayla dener. Kısa şifreler birkaç saniyede bulunur.</p>
+        </article>
+        <article class="card info reveal">
+          <div class="ico" aria-hidden="true">💧</div>
+          <h3>Sızıntılar</h3>
+          <p>Bir siteden çalınan şifreler başka sitelerde de denenir. Aynı şifreyi her yerde kullanmak bu yüzden tehlikelidir.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="ornekler">
+    <div class="wrap">
+      <h2>Zayıf mı, güçlü mü?</h2>
+      <p class="sub">Örneklere bak, "Test et" düğmesiyle kendin dene.</p>
+      <div class="examples">
+        <div class="col weak">
+          <h3><span aria-hidden="true">❌</span> Zayıf şifreler</h3>
+          <article class="ex card reveal">
+            <code>123456</code>
+            <p>Dünyada en çok kullanılan şifrelerden biri. İlk saniyede denenir.</p>
+            <button class="btn small" type="button" data-try="123456" data-expect="weak">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>ayse2010</code>
+            <p>İsim ve doğum yılı. Seni tanıyan herkes tahmin edebilir.</p>
+            <button class="btn small" type="button" data-try="ayse2010" data-expect="weak">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>Galatasaray1905</code>
+            <p>Tuttuğun takım ve kuruluş yılı. Çok kişi aynı fikri kullanıyor.</p>
+            <button class="btn small" type="button" data-try="Galatasaray1905" data-expect="weak">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>P@ssw0rd</code>
+            <p>Harfleri sembolle değiştirmek (a→@, o→0) bilinen bir numara. Programlar bunu da dener.</p>
+            <button class="btn small" type="button" data-try="P@ssw0rd" data-expect="weak">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>qwerty12</code>
+            <p>Klavyede yan yana duran tuşlar. Kolay yazılır, kolay bulunur.</p>
+            <button class="btn small" type="button" data-try="qwerty12" data-expect="weak">Test et</button>
+          </article>
+        </div>
+        <div class="col strong">
+          <h3><span aria-hidden="true">✅</span> Güçlü şifreler</h3>
+          <article class="ex card reveal">
+            <code>BenimKedimHerSabah7deSutIcer!</code>
+            <p>Uzun bir cümleden yapılmış. Hatırlaması kolay, tahmin etmesi çok zor.</p>
+            <button class="btn small" type="button" data-try="BenimKedimHerSabah7deSutIcer!" data-expect="strong">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>Yesil-Balina-Gitar-Caliyor-24</code>
+            <p>Birbiriyle ilgisiz kelimeler, araya işaretler ve rakam. Uzunluk en büyük güçtür.</p>
+            <button class="btn small" type="button" data-try="Yesil-Balina-Gitar-Caliyor-24" data-expect="strong">Test et</button>
+          </article>
+          <article class="ex card reveal">
+            <code>t7#Kq!9wZp2@Lm</code>
+            <p>Rastgele ve uzun. Ezberlemesi zor; böyle şifreleri bir şifre yöneticisi saklayabilir.</p>
+            <button class="btn small" type="button" data-try="t7#Kq!9wZp2@Lm" data-expect="strong">Test et</button>
+          </article>
+          <p class="note"><span aria-hidden="true">⚠️</span> Bu örnekleri kullanma! İnternette yayımlanan bir şifre, güçlü olsa bile artık güvenli değildir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kurallar">
+    <div class="wrap">
+      <h2>Güçlü şifrenin altın kuralları</h2>
+      <div class="grid">
+        <article class="card info reveal"><div class="ico" aria-hidden="true">📏</div><h3>Uzun olsun</h3><p>En az 12 karakter. Uzunluk, karmaşıklıktan daha önemlidir.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🔑</div><h3>Her hesaba ayrı şifre</h3><p>Bir şifre çalınırsa diğer hesapların güvende kalır.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">💬</div><h3>Cümle şifre kullan</h3><p>Yalnızca senin bildiğin bir cümleyi şifreye dönüştür. Aşağıda nasıl yapılacağını gör.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🤫</div><h3>Kimseyle paylaşma</h3><p>En yakın arkadaşınla bile. Yalnızca annen, baban ya da velinle paylaşabilirsin.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">📲</div><h3>İki adımlı doğrulama</h3><p>Girişte şifreye ek olarak telefonuna gelen kod istenir. Şifren çalınsa bile hesabın korunmaya devam eder.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🗄️</div><h3>Şifre yöneticisi</h3><p>Şifreleri güvenle saklayan uygulamalar. Tek bir güçlü ana şifreyi hatırlaman yeter.</p></article>
+      </div>
+
+      <h3 class="steps-title">Cümle şifre nasıl yapılır?</h3>
+      <ol class="steps">
+        <li class="card reveal">
+          <span class="num" aria-hidden="true">1</span>
+          <strong>Bir cümle düşün</strong>
+          <span>Benim kedim her sabah 7'de süt içer!</span>
+        </li>
+        <li class="card reveal">
+          <span class="num" aria-hidden="true">2</span>
+          <strong>Boşlukları sil, kelimelerin ilk harfini büyük yaz</strong>
+          <code>BenimKedimHerSabah7deSütİçer!</code>
+        </li>
+        <li class="card reveal">
+          <span class="num" aria-hidden="true">3</span>
+          <strong>Türkçe harfleri değiştir</strong>
+          <span>Bazı siteler ç, ş, ğ, ü, ö, ı harflerini kabul etmez.</span>
+          <code>BenimKedimHerSabah7deSutIcer!</code>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section alt" id="bilgi">
+    <div class="wrap">
+      <h2>Doğru mu, yanlış mı?</h2>
+      <p class="sub">Kartın üstüne dokun, cevabı gör.</p>
+      <div class="grid flips">
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">a yerine @, o yerine 0 yazarsam şifrem çok güçlü olur.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back no" aria-hidden="true"><strong>Yanlış ❌</strong><span>Şifre kırma programları bu numarayı bilir ve ilk önce dener.</span></span>
+          </span>
+        </button>
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">Uzun bir şifre, kısa ve karışık bir şifreden genellikle daha güçlüdür.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back yes" aria-hidden="true"><strong>Doğru ✅</strong><span>Her yeni karakter, denenmesi gereken olasılıkları katlar.</span></span>
+          </span>
+        </button>
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">Çok güçlü bir şifreyi her yerde kullanabilirim.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back no" aria-hidden="true"><strong>Yanlış ❌</strong><span>Bir site sızdırılırsa aynı şifreyle bütün hesaplarına girilebilir.</span></span>
+          </span>
+        </button>
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">Şifremi en yakın arkadaşıma söylemem sorun olmaz.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back no" aria-hidden="true"><strong>Yanlış ❌</strong><span>Arkadaşlıklar değişebilir. Şifreni yalnızca annen, baban ya da velinle paylaş.</span></span>
+          </span>
+        </button>
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">İki adımlı doğrulama, şifrem çalınsa bile hesabımı korumaya yardım eder.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back yes" aria-hidden="true"><strong>Doğru ✅</strong><span>Giriş için telefonuna gelen kod da gerekir. Şifreyi bilen kişi tek başına giremez.</span></span>
+          </span>
+        </button>
+        <button class="flip reveal" type="button" aria-pressed="false">
+          <span class="flip-inner">
+            <span class="face front"><span class="q">Şifremi her ay değiştirmezsem kesin çalınır.</span><span class="hint">Çevir 👆</span></span>
+            <span class="face back no" aria-hidden="true"><strong>Yanlış ❌</strong><span>Güçlü ve tek bir hesapta kullanılan şifreyi, ele geçirildiğinden şüphelenmedikçe sık sık değiştirmen gerekmez.</span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="veliler">
+    <div class="wrap">
+      <h2>Veliler için</h2>
+      <p class="sub">Çocuğunuzun dijital güvenliği, birlikte atılan küçük adımlarla başlar.</p>
+      <div class="grid">
+        <article class="card info reveal"><div class="ico" aria-hidden="true">👨‍👩‍👧</div><h3>Birlikte oluşturun</h3><p>Çocuğunuzun ilk şifrelerini onunla birlikte, bu sayfadaki testi kullanarak oluşturun.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🗣️</div><h3>Konuşun, korkutmayın</h3><p>Şifrenin neden gizli kalması gerektiğini anlatın. Bir sorun olduğunda size gelebileceğini bilsin.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">📧</div><h3>Önce e-posta</h3><p>E-posta hesabı diğer hesapların anahtarıdır. En güçlü şifre ve iki adımlı doğrulama önce ona.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🖥️</div><h3>Ortak cihazlarda çıkış</h3><p>Okulda ya da ortak bilgisayarlarda işi bitince oturumu kapatmayı alışkanlık hâline getirin.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">🗄️</div><h3>Güvenli saklama</h3><p>Şifreleri buzdolabına yapıştırmak yerine bir şifre yöneticisi ya da kilitli bir yer kullanın.</p></article>
+        <article class="card info reveal"><div class="ico" aria-hidden="true">⭐</div><h3>Örnek olun</h3><p>Kendi hesaplarınızda da güçlü ve farklı şifreler kullanın. Çocuklar gördüklerini yapar.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta" id="gorev">
+    <div class="wrap narrow">
+      <h2>Haftanın görevi: 1 hesap, 1 güçlü şifre</h2>
+      <p class="sub">Güvenli İnternet Haftası'nda tek bir alışkanlık kazanıyoruz: <strong>güçlü parola</strong>. Üç adımı tamamla, işaretle!</p>
+      <ol class="tasks">
+        <li><label><input type="checkbox" data-task="0"> <span><strong>En önemli hesabını seç.</strong> Bu genellikle e-posta hesabındır.</span></label></li>
+        <li><label><input type="checkbox" data-task="1"> <span><strong>Cümle şifre yöntemiyle yeni bir şifre düşün.</strong> Ona benzeyen bir örneği yukarıda test et; "Güçlü" ya da "Çok güçlü" sonucunu gör.</span></label></li>
+        <li><label><input type="checkbox" data-task="2"> <span><strong>Şifreni değiştir</strong> ve mümkünse iki adımlı doğrulamayı aç. Veliler: bu adımı çocuğunuzla birlikte yapın.</span></label></li>
+      </ol>
+      <div class="progress" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
+      <p class="done" id="done" hidden><span aria-hidden="true">🎉</span> Tebrikler! Kalenin kapısı artık çok daha sağlam.</p>
+      <p class="small">Haftanın programı ve etkinlik tarihleri için kurumunuzun <strong>Güvenli İnternet Haftası kampanya bilgi kartına</strong> bakın.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><span aria-hidden="true">🛡️</span> Şifre Kalesi · Güvenli İnternet Haftası</p>
+    <p class="small">Bu site hiçbir veri toplamaz ve yazdığın şifreyi hiçbir yere göndermez. Süre tahminleri, saniyede 10 milyar deneme yapan bir bilgisayar varsayımına dayanır; gerçek durum siteden siteye değişebilir.</p>
+  </div>
+</footer>
+
+<script src="sifre.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

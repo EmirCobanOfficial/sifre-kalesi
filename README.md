@@ -4,6 +4,12 @@
 
 **Canlı site:** https://emircobanofficial.github.io/sifre-kalesi/
 
+## Tanıtım videosu
+
+[![Şifre Kalesi tanıtım videosu (30 sn)](tanitim-kapak.jpg)](https://emircobanofficial.github.io/sifre-kalesi/tanitim.mp4)
+
+30 saniyelik animasyon: görsele tıklayınca açılır. Videoyu sitede de izleyebilirsiniz: [Tanıtım videosu bölümü](https://emircobanofficial.github.io/sifre-kalesi/#video). Müzik ve ses efektleri bu proje için sıfırdan üretildi, telifsizdir.
+
 ## Neler var?
 
 - **Anlık şifre analizi:** güç göstergesi, tahmini kırılma süresi, kontrol listesi ve kişiye özel öneriler
@@ -11,6 +17,7 @@
 - **Altın kurallar** ve adım adım **cümle şifre** yöntemi
 - **Doğru mu, yanlış mı?** çevrilen bilgi kartları
 - **Veliler için** öneriler
+- **Tanıtım videosu:** 30 saniyelik animasyon (fon müziği ve efektlerle)
 - **Haftanın görevi:** 3 adımlı kontrol listesi (ilerleme cihazda saklanır)
 - Mobil uyumlu, animasyonlu, ekran okuyucu ve klavye dostu
 

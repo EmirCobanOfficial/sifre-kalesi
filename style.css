@@ -275,3 +275,5 @@ h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); margin: .3em 0 .3em; letter-spacing:
 .tester { border: 3px solid var(--neon); }
 .info, .ex, .steps li { border-top: 4px solid #3ef0ff; }
 .weak .ex, .strong .ex { border-top: 1px solid var(--line); }
+.video-wrap { max-width: 960px; }
+.promo { display: block; width: 100%; height: auto; border-radius: var(--r); border: 3px solid var(--neon); box-shadow: var(--shadow); background: var(--night); }
